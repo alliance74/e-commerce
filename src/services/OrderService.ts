@@ -11,6 +11,8 @@ export interface Order {
   paymentMethod: string;
 }
 
+
+
 export interface ShippingAddress {
   name: string;
   street: string;
@@ -24,12 +26,11 @@ export interface ShippingAddress {
 export class OrderService {
   private static ORDERS_STORAGE_KEY = 'user_orders';
 
-  // Generate a unique order ID
+
   private static generateOrderId(): string {
     return Date.now().toString(36) + Math.random().toString(36).substr(2, 5).toUpperCase();
   }
 
-  // Get all orders for the current user
   static getOrders(): Order[] {
     const orders = localStorage.getItem(this.ORDERS_STORAGE_KEY);
     if (!orders) return [];
